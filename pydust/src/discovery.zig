@@ -33,14 +33,14 @@ const Identifier = struct {
 };
 
 pub const State = blk: {
-    comptime var privateMethods: [1000]*anyopaque = undefined;
-    comptime var privateMethodsSize: usize = 0;
+    var privateMethods: [1000]*anyopaque = undefined;
+    var privateMethodsSize: usize = 0;
 
-    comptime var definitions: [1000]Definition = undefined;
-    comptime var definitionsSize: usize = 0;
+    var definitions: [1000]Definition = undefined;
+    var definitionsSize: usize = 0;
 
-    comptime var identifiers: [1000]Identifier = undefined;
-    comptime var identifiersSize: usize = 0;
+    var identifiers: [1000]Identifier = undefined;
+    var identifiersSize: usize = 0;
 
     break :blk struct {
         pub fn register(
