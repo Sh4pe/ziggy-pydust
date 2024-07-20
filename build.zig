@@ -18,6 +18,8 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    _ = b.addModule("pydust", .{ .root_source_file = b.path("pydust/src/pydust.zig") });
+
     const python_exe = b.option([]const u8, "python-exe", "Python executable to use") orelse "python";
 
     const pythonInc = getPythonIncludePath(python_exe, b.allocator) catch @panic("Missing python");
