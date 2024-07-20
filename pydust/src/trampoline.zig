@@ -71,7 +71,8 @@ pub fn Trampoline(comptime T: type) type {
                         // If the pointer is for a Pydust class
                         if (def.type == .class) {
                             const PyType = pytypes.PyTypeStruct(p.child);
-                            const ffiObject: *ffi.PyObject = @constCast(@ptrCast(@fieldParentPtr(PyType, "state", obj)));
+                            const pyTypePtr: *PyType = @fieldParentPtr("state", obj);
+                            const ffiObject: *ffi.PyObject = @constCast(@ptrCast(pyTypePtr));
                             return .{ .py = ffiObject };
                         }
 
